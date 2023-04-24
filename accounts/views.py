@@ -59,7 +59,7 @@ def signup_user(request):
         form = SignupForm()
 
     context = {
-        "form", form,
+        "form": form,
     }
 
     return render(request, "accounts/signup.html", context)
