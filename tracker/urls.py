@@ -24,6 +24,7 @@ def redirect_homepage(request):
 
 
 urlpatterns = [
+    path("accounts/", include("accounts.urls")),
     path("", redirect_homepage, name="home"),
     path("projects/", include("projects.urls")),
     path("admin/", admin.site.urls),
