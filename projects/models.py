@@ -9,7 +9,7 @@ class Project(models.Model):
     description = models.TextField()
     owner = models.ForeignKey(
         User,
-        null = True,
+        null=True,
         related_name="projects",
         on_delete=models.CASCADE,
     )
