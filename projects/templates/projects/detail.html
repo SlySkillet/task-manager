@@ -10,7 +10,7 @@
         <h1>{{ tasks.name }}</h1>
         <p>{{ tasks.description }}</p>
         <h2>Tasks</h2>
-        {% if tasks %}
+        {% if tasks.tasks.all|length > 0 %}
             <table>
                 <thead>
                     <th>Name</th>
@@ -24,8 +24,8 @@
                     <tr>
                         <td>{{ task.name }}</td>
                         <td>{{ task.assignee }}</td>
-                        <td>{{ task.start_date|date:"m/d/y g:iA" }}</td>
-                        <td>{{ task.due_date|date:"m/d/y g:iA"}}</td>
+                        <td>{{ task.start_date|date:"m/d/Y g:iA" }}</td>
+                        <td>{{ task.due_date|date:"m/d/Y g:iA"}}</td>
                         <td>{{ task.is_complete|yesno }}</td>
                     </tr>
                     {% endfor %}
