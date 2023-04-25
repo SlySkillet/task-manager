@@ -7,8 +7,8 @@
 {% block content %}
 <main>
     <div>
-        <h1>{{ tasks.project }}</h1>
-        <p>{{ tasks.project.description }}</p>
+        <h1>{{ tasks.name }}</h1>
+        <p>{{ tasks.description }}</p>
         <h2>Tasks</h2>
         {% if tasks %}
             <table>
@@ -20,7 +20,11 @@
                     <th>Is completed</th>
                 </thead>
                 <tbody>
-
+                    {% for task in tasks.tasks.all  %}
+                    <tr>
+                        <td>name</td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         {% else %}

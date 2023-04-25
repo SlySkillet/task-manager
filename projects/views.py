@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Project
-from tasks.models import Task
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -18,10 +17,10 @@ def projects_view(request):
 
 @login_required
 def tasks_view(request, id):
-    tasks = get_object_or_404(Task, id=id)
+    task = get_object_or_404(Project, id=id)
 
     context = {
-        "tasks": tasks,
+        "tasks": task,
     }
 
     return render(request, "projects/detail.html", context)
