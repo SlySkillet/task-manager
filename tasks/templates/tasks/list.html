@@ -19,7 +19,10 @@
             <tbody>
                 {% for task in tasks.all  %}
                 <tr>
-                    <td>name</td>
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.start_date|date:"m/d/Y g:iA"}}</td>
+                    <td>{{ task.due_date|date:"m/d/Y g:iA" }}</td>
+                    <td>{{ task.is_complete|yesno }}</td>
                 </tr>
                 {% endfor %}
 
