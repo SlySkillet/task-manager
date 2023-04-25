@@ -7,6 +7,16 @@
     <title>{% block title %}{% endblock title %}</title>
   </head>
   <body>
+    <header>
+      <nav>
+        <ul>
+          {% if request.user.is_authenticated %}
+            <li><a href="{% url "show_my_tasks"%}">My tasks</a></li>
+
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
     {% block content %}{% endblock content %}
   </body>
 </html>
