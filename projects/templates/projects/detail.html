@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Tasks{% endblock title %}
+
+
+{% block content %}
+<main>
+    <div>
+        <h1>project name</h1>
+        <p>project description</p>
+        <h2>Tasks</h2>
+        {% if tasks|length > 0 %}
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Assignee</th>
+                    <th>Start date</th>
+                    <th>Due date</th>
+                    <th>Is completed</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        {% else %}
+        <p>This project has no tasks</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock content %}
