@@ -15,7 +15,7 @@
     <body>
         <div class="grid-container">
             <header>
-                <nav>
+                <nav class="header-nav">
                     <ul>
                         {% if request.user.is_authenticated %}
                         <li>
@@ -41,8 +41,8 @@
             {% block content %}
             {% endblock content %}
             <footer>
-                <p>made by Simon</p>
-                <nav>
+                <p class="made-by">made by Simon</p>
+                <nav class="footer-nav">
                     <ul>
                         <li>Git</li>
                         <li>Li</li>
