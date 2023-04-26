@@ -1,10 +1,13 @@
 /* import font */
+/* @import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&family=Slackey&display=swap');
 
 /* UNIVERSAL */
 * {
 box-sizing: border-box;
 /* border: 2px solid rgb(244, 23, 141); */
 margin: 0;
+/* font-family: 'Courier New', Courier, monospace; */
 }
 
 a{
@@ -16,6 +19,11 @@ text-decoration: none;
 display: grid;
 grid-template-columns: 150px 1fr 1fr 1fr 150px;
 height: 100vh;
+}
+
+body{
+    background-color: rgb(249, 249, 249);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 header, footer{
@@ -55,11 +63,17 @@ nav{
 }
 /* MAIN */
 
-h1 {
+h1, h2 {
+    font-family: 'Sedgwick Ave Display', cursive;
     margin-left: 15px;
 }
 
 
+
+.create {
+    margin-left: 20px;
+    padding: 5px 20px;
+}
 
 /* table */
 table {
@@ -67,6 +81,7 @@ table {
     border: 1px solid rgb(249, 204, 204);
     border-collapse: collapse;
     width: 100%;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 th {
@@ -82,9 +97,14 @@ tbody tr:nth-child(even){
     background-color: rgb(249, 225, 225)
 }
 
+tbody tr:nth-child(odd){
+    background-color: rgb(255, 255, 255);
+}
+
 tbody tr:hover{
     background-color: rgb(249, 204, 204);
 }
+
 
 td, th{
     padding: 5px 10px;
