@@ -12,14 +12,9 @@ margin: 0;
 display: grid;
 grid-template-columns: 150px 1fr 1fr 150px;
 height: 100vh;
-
 }
 
-header{
-    grid-column: 1/5;
-}
-
-footer{
+header, footer{
     grid-column: 1/5;
 }
 
@@ -28,7 +23,16 @@ main{
     grid-column: 2/4;
 }
 
-/* NAV BAR */
+/* HEADER */
+ul{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+ul{
+    list-style: none;
+}
 
 /* body {
     background-color: aqua;
