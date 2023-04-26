@@ -13,10 +13,11 @@
         <link rel="stylesheet" href="{% static "css/styles.css" %}">
     </head>
     <body>
-        <header>
-            <nav>
-                <ul>
-                    {% if request.user.is_authenticated %}
+        <div class="grid-container">
+            <header>
+                <nav>
+                    <ul>
+                        {% if request.user.is_authenticated %}
                         <li>
                             <a href="{% url "show_my_tasks" %}">My tasks</a>
                         </li>
@@ -26,27 +27,28 @@
                         <li>
                             <a href="{% url "logout" %}">Logout</a>
                         </li>
-                    {% else %}
+                        {% else %}
                         <li>
                             <a href="{% url "login" %}">Login</a>
                         </li>
                         <li>
                             <a href="{% url "signup" %}">Signup</a>
                         </li>
-                    {% endif %}
+                        {% endif %}
+                    </ul>
+                </nav>
+            </header>
+            {% block content %}
+            {% endblock content %}
+            <footer>
+                <p>made by Simon</p>
+                <ul>
+                    <li>Git</li>
+                    <li>Li</li>
+                    <li>Portfolio</li>
+                    <li>Twitter</li>
                 </ul>
-            </nav>
-        </header>
-        {% block content %}
-        {% endblock content %}
-        <footer>
-            <p>made by Simon</p>
-            <ul>
-                <li>Git</li>
-                <li>Li</li>
-                <li>Portfolio</li>
-                <li>Twitter</li>
-            </ul>
-        </footer>
+            </footer>
+        </div>
     </body>
 </html>
