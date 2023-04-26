@@ -3,7 +3,7 @@
 /* UNIVERSAL */
 * {
 box-sizing: border-box;
-border: 2px solid rgb(244, 23, 141);
+/* border: 2px solid rgb(244, 23, 141); */
 margin: 0;
 }
 
@@ -23,8 +23,9 @@ header, footer{
 }
 
 main{
-    background-color: aqua;
+    /* background-color: aqua; */
     grid-column: 2/4;
+    padding: 40px;
 }
 
 /* HEADER */
@@ -48,12 +49,47 @@ nav{
 .header-nav{
     margin-left: 50px;
 }
+/* MAIN */
+table {
+    /* background-color: aquamarine; */
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+
+
+
+
+
+th {
+    text-align: center;
+
+}
+
+tr:nth-child(even){
+    background-color: rgb(211, 209, 209)
+}
+
+thead{
+    background-color: aquamarine;
+}
+
+.table-project-name{
+    text-align: left;
+}
+
+.table-number{
+    text-align: center;
+}
 
 /* FOOTER */
 footer {
     height: 60px;
     align-self: flex-end;
     justify-content: space-between;
+}
+
+.footer-nav{
+    gap: 10px;
 }
 
 .made-by{
