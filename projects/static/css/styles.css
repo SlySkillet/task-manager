@@ -10,7 +10,7 @@ margin: 0;
 /* GENERAL LAYOUT */
 .grid-container{
 display: grid;
-grid-template-columns: 200px 1fr 1fr 200px;
+grid-template-columns: 150px 1fr 1fr 150px;
 height: 100vh;
 
 }
@@ -25,6 +25,7 @@ footer{
 
 main{
     background-color: aqua;
+    grid-column: 2/4;
 }
 
 /* NAV BAR */
