@@ -1,11 +1,33 @@
 /* import font */
 
+/* UNIVERSAL */
 * {
 box-sizing: border-box;
 border: 2px solid rgb(244, 23, 141);
 margin: 0;
 }
 
+/* GENERAL LAYOUT */
+.grid-container{
+display: grid;
+grid-template-columns: 200px 1fr 1fr 200px;
+height: 100vh;
+
+}
+
+header{
+    grid-column: 1/5;
+}
+
+footer{
+    grid-column: 1/5;
+}
+
+main{
+    background-color: aqua;
+}
+
+/* NAV BAR */
 
 /* body {
     background-color: aqua;
