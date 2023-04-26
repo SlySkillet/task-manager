@@ -59,6 +59,8 @@ h1 {
     margin-left: 15px;
 }
 
+
+
 /* table */
 table {
     /* background-color: aquamarine; */
@@ -86,10 +88,9 @@ tbody tr:hover{
 
 td, th{
     padding: 5px 10px;
-}
-td, th{
     border: 1px solid rgb(249, 204, 204);
 }
+
 
 .table-project-name{
     text-align: left;
