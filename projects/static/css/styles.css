@@ -16,6 +16,7 @@ height: 100vh;
 
 header, footer{
     grid-column: 1/5;
+    background-color: yellow;
 }
 
 main{
@@ -28,11 +29,23 @@ ul{
     display: flex;
     flex-direction: row;
     gap: 30px;
-}
-
-ul{
     list-style: none;
 }
+
+header{
+    height: 50px;
+
+}
+
+/* FOOTER */
+footer {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-self: flex-end;
+    justify-content: space-between;
+}
+
 
 /* body {
     background-color: aqua;
