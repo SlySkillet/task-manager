@@ -5,13 +5,12 @@ from .forms import ProjectForm
 
 # Create your views here.
 
+
 @login_required
 def projects_view(request):
     projects = Project.objects.filter(owner=request.user)
 
-    context = {
-        "projects": projects
-    }
+    context = {"projects": projects}
 
     return render(request, "projects/list.html", context)
 
