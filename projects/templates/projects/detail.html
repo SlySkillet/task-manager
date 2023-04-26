@@ -9,7 +9,7 @@
             <h1>{{ tasks.name }}</h1>
             <p>{{ tasks.description }}</p>
             <h2>Tasks</h2>
-            <p>
+            <p class="create">
                 <a href="{% url "create_task" %}">Create a new task</a>
             </p>
             {% if tasks.tasks.all|length > 0 %}
