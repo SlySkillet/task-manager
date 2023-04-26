@@ -17,6 +17,7 @@ height: 100vh;
 header, footer{
     grid-column: 1/5;
     background-color: yellow;
+    padding: 10px 10px;
 }
 
 main{
@@ -30,10 +31,11 @@ ul{
     flex-direction: row;
     gap: 30px;
     list-style: none;
+    padding: 10px;
 }
 
 header{
-    height: 50px;
+    height: 60px;
 
 }
 
@@ -41,7 +43,7 @@ header{
 footer {
     display: flex;
     flex-direction: row;
-    height: 50px;
+    height: 60px;
     align-self: flex-end;
     justify-content: space-between;
 }
