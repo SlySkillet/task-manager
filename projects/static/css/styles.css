@@ -82,7 +82,7 @@ nav{
 }
 
 .nav-link:hover{
-    background-color: rgb(221, 243, 244);
+    /* background-color: rgb(221, 243, 244); */
     padding: 6px 21px;
     font-size: 15px;
 }
@@ -98,7 +98,7 @@ h1, h2 {
 h1{
     font-size: 100px;
     text-shadow:3px 3px 2px rgb(114, 235, 235), 3px 3px 2px black, 20px 20px 60px gold;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 /* h1::first-letter{
@@ -117,7 +117,8 @@ h1{
 }
 
 .create:hover {
-    background-color: rgb(221, 243, 244);
+    /* background-color: rgb(221, 243, 244); */
+
     padding: 8px 25px;
     font-size: 15px;
 }
@@ -130,7 +131,7 @@ table {
     width: 100%;
     /* font-family: 'Courier New', Courier, monospace; */
     margin: 20px 0;
-    box-shadow:  2px 2px 3px rgb(114, 235, 235), 2px 2px 2px black
+    /* box-shadow:  2px 2px 3px rgb(114, 235, 235), 2px 2px 2px black */
 
 }
 
@@ -148,7 +149,7 @@ thead{
 }
 
 tbody tr:nth-child(even){
-    background-color: rgb(249, 225, 225)
+    background-color: rgb(246, 237, 237)
 }
 
 tbody tr:nth-child(odd){
@@ -156,7 +157,7 @@ tbody tr:nth-child(odd){
 }
 
 tbody tr:hover{
-    background-color: rgb(249, 204, 204);
+    background-color: rgb(245, 218, 218);
 }
 
 
