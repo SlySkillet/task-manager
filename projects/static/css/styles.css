@@ -97,7 +97,13 @@ h1, h2 {
 
 h1{
     font-size: 100px;
+    text-shadow:3px 3px 2px rgb(114, 235, 235), 3px 3px 2px black, 20px 20px 60px gold;
 }
+
+/* h1::first-letter{
+    font-size: 100px;
+    text-shadow:3px 3px 2px rgb(114, 235, 235), 5px 5px 5px red, 5px 5px 2px black, 10px 10px 60px gold;
+} */
 
 
 
