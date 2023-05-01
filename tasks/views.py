@@ -39,6 +39,8 @@ def create_task(request):
 # --GANTT CHART EXPERIMENT--
 @login_required
 def view_tasks(request):
+    tasks = Task.objects.filter(assignee=request.user)
+
     qs = Task.objects.filter(assignee=request.user)
     projects_data = [
         {
@@ -56,7 +58,8 @@ def view_tasks(request):
     gantt_plot = plot(fig, output_type="div")
 
     context = {
-        'plot_div': gantt_plot
+        "tasks": tasks,
+        'plot_div': gantt_plot,
     }
 
     return render(request, 'tasks/list.html', context)
