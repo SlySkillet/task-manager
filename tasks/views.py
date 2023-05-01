@@ -26,28 +26,27 @@ def create_task(request):
     return render(request, "tasks/create.html", context)
 
 
-@login_required
-def view_tasks(request):
-    tasks = Task.objects.filter(assignee=request.user)
+# @login_required
+# def view_tasks(request):
+#     tasks = Task.objects.filter(assignee=request.user)
 
-    context = {
-        "tasks": tasks,
-    }
+#     context = {
+#         "tasks": tasks,
+#     }
 
-    return render(request, "tasks/list.html", context)
+#     return render(request, "tasks/list.html", context)
 
 # --GANTT CHART EXPERIMENT--
 @login_required
-def projects_view(request):
-    projects = Project.objects.filter(owner=request.user)
-    qs = Chart.objects.all()
+def view_tasks(request):
+    qs = Task.objects.filter(assignee=request.user)
     projects_data = [
         {
-            'Project': x.name,
-            'Start': x.start_date,
-            'Finish': x.finish_date,
-            'Responsible': x.responsible.username,
-        } for x in qs
+            'Project': task.name,
+            'Start': task.start_date,
+            'Finish': task.due_date,
+            'Responsible': task.assignee,
+        } for task in qs
     ]
     df = pd.DataFrame(projects_data)
     fig = px.timeline(
@@ -57,8 +56,7 @@ def projects_view(request):
     gantt_plot = plot(fig, output_type="div")
 
     context = {
-        "projects": projects,
-        "plot_div": gantt_plot,
-        }
+        'plot_div': gantt_plot
+    }
 
-    return render(request, "projects/list.html", context)
+    return render(request, 'tasks/list.html', context)
