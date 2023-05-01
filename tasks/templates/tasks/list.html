@@ -7,7 +7,7 @@
     <main>
         <div>
             <h1>My Tasks</h1>
-            {% if tasks.all|length > 0 %}
+            {% comment %} {% if tasks.all|length > 0 %}
                 <table>
                     <thead>
                         <th>Name</th>
@@ -29,6 +29,9 @@
             {% else %}
                 <p>You have no tasks</p>
             {% endif %}
-        </div>
+        </div> {% endcomment %}
+        {% autoescape off %}
+        {{ plot_div }}
+        {% endautoescape %}
     </main>
 {% endblock content %}
