@@ -31,5 +31,8 @@
                     </tbody>
                 </table>
             {% endif %}
+            {% comment %} {% autoescape off %}
+            {{ plot_div }}
+            {% endautoescape %} {% endcomment %}
     </main>
 {% endblock content %}
