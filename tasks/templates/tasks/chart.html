@@ -3,7 +3,8 @@
 {% block title %}projects chart{% endblock title %}
 
 {% block content %}
-<div class="chart">
+<main>
+
     <div>
         <h1>{{ project.name }}</h1>
         <p>{{ project.description }}</p>
@@ -12,34 +13,36 @@
             <a href="{% url "create_task" %}">Create a new task</a>
         </p>
         {% if tasks.all|length > 0 %}
-            <table>
-                <thead>
-                    <th>Name</th>
-                    <th>Assignee</th>
-                    <th>Start date</th>
-                    <th>Due date</th>
-                    <th>Is completed</th>
-                </thead>
-                <tbody>
-                    {% for task in tasks.all  %}
-                        <tr>
-                            <td>{{ task.name }}</td>
-                            <td>{{ task.assignee }}</td>
-                            <td>{{ task.start_date|date:"m/d/Y g:iA" }}</td>
-                            <td>{{ task.due_date|date:"m/d/Y g:iA" }}</td>
-                            <td>{{ task.is_complete|yesno }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Assignee</th>
+                <th>Start date</th>
+                <th>Due date</th>
+                <th>Is completed</th>
+            </thead>
+            <tbody>
+                {% for task in tasks.all  %}
+                <tr>
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.assignee }}</td>
+                    <td>{{ task.start_date|date:"m/d/Y g:iA" }}</td>
+                    <td>{{ task.due_date|date:"m/d/Y g:iA" }}</td>
+                    <td>{{ task.is_complete|yesno }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
         {% else %}
-            <p>This project has no tasks</p>
+        <p>This project has no tasks</p>
         {% endif %}
     </div>
 
+    <div class="chart">
     {% autoescape off %}
-    {{ plot_div }}
-    {% endautoescape %}
-</div>
+        {{ plot_div }}
+        {% endautoescape %}
+    </div>
+</main>
 {% endblock content %}
