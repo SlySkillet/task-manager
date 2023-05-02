@@ -70,7 +70,7 @@ def edit_task(request, id):
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
-            return redirect("view_chart", id=id)
+            return redirect("show_my_tasks")
     else:
         form = TaskForm(instance=task)
 
