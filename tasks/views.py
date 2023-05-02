@@ -42,8 +42,12 @@ def view_tasks(request):
     qs = Task.objects.filter(assignee=request.user)
     if request.method == "POST":
         id_list = request.POST.getlist("boxes")
+
+        qs.update(is_complete=False)
+
         for x in id_list:
             Task.objects.filter(pk=int(x)).update(is_complete=True)
+
         return(redirect("show_my_tasks"))
     projects_data = [
         {
