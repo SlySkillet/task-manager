@@ -23,7 +23,7 @@
                         {% for project in projects %}
                             <tr>
                                 <td class="table-project-name">
-                                    <a href="{% url 'show_project' project.id %}">{{ project.name }}</a>
+                                    <a href="{% url 'view_chart' project.id %}">{{ project.name }}</a>
                                 </td>
                                 <td class="table-number">{{ project.tasks.all|length }}</td>
                             </tr>
