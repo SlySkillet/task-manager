@@ -18,7 +18,7 @@
                     <thead>
                         <th>Name</th>
                         <th>Number of tasks</th>
-                        <th></th>
+                        {% comment %} <th></th> {% endcomment %}
                     </thead>
                     <tbody>
                         {% for project in projects %}
@@ -27,7 +27,7 @@
                                     <a href="{% url 'view_chart' project.id %}">{{ project.name }}</a>
                                 </td>
                                 <td class="table-number">{{ project.tasks.all|length }}</td>
-                                <td><a href="{% url 'edit_project' project.id %}">Edit</a></td>
+                                {% comment %} <td><a href="{% url 'edit_project' project.id %}">Edit</a></td> {% endcomment %}
                             </tr>
                         {% endfor %}
                     </tbody>
