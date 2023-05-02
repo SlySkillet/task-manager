@@ -65,7 +65,7 @@ def view_tasks(request):
 
 @login_required
 def edit_task(request, id):
-    task = get_object_or_404(Task, id)
+    task = get_object_or_404(Task, id=id)
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
