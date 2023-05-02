@@ -14,7 +14,6 @@
                         <th>Start date</th>
                         <th>Due date</th>
                         <th>Is completed</th>
-                        <th>Edit</th>
                     </thead>
                     <tbody>
                         {% for task in tasks.all  %}
@@ -23,18 +22,22 @@
                                 <td>{{ task.start_date|date:"m/d/Y g:iA" }}</td>
                                 <td>{{ task.due_date|date:"m/d/Y g:iA" }}</td>
                                 <td>
-                                    <div>
+                                    <form action="" method="post">
+                                        {% csrf_token %}
 
-                                        <input type="checkbox"
                                         {% if task.is_complete %}
-                                        checked
-                                        {%else%}
-                                        {% endif %}>
-                                        <label for="yesno">{{ task.is_complete|yesno }}</label>
-
-
-
-                                    </div>
+                                        <div>
+                                            <input type="checkbox" checked="checked" value={{task.id}} name="boxes">
+                                            <label for="yesno">{{ task.is_complete|yesno }}</label>
+                                        </div>
+                                        {% else %}
+                                        <div>
+                                            <input type="checkbox" value={{task.id}} name="boxes">
+                                            <label for="yesno">{{ task.is_complete|yesno }}</label>
+                                        </div>
+                                        {% endif %}
+                                        <button class ="btn btn-secondary" type="submit">Submit</button>
+                                    </form>
 
                                 </td>
 
@@ -42,6 +45,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
+
             {% else %}
                 <p>You have no tasks</p>
             {% endif %}
