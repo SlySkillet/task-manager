@@ -75,11 +75,12 @@ def view_tasks(request):
 @login_required
 def edit_task(request, id):
     task = get_object_or_404(Task, id=id)
+    print(task.project.id)
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
-            return redirect("show_my_tasks")
+            return redirect("view_chart", id=task.project.id)
     else:
         form = TaskForm(instance=task)
 
