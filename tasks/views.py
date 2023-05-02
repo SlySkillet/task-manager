@@ -86,6 +86,7 @@ def project_task_chart(request, id):
 
     context = {
         "plot_div": gantt_plot,
+        "tasks": qs,
     }
 
     return render(request, 'tasks/chart.html', context)
