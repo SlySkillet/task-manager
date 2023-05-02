@@ -54,7 +54,7 @@ def edit_project(request, id):
         form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
             form.save()
-            return redirect("home")
+            return redirect("list_projects")
     else:
         form = ProjectForm(instance=project)
 
