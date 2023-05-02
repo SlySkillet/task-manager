@@ -63,3 +63,29 @@ def view_tasks(request):
     }
 
     return render(request, 'tasks/list.html', context)
+
+
+@login_required
+def project_task_chart(request, id):
+
+    qs = Task.objects.filter(project=id)
+    projects_data = [
+        {
+            'Project': task.name,
+            'Start': task.start_date,
+            'Finish': task.due_date,
+            'Responsible': task.assignee,
+        } for task in qs
+    ]
+    df = pd.DataFrame(projects_data)
+    fig = px.timeline(
+        df, x_start="Start", x_end="Finish", y="Project", color="Responsible"
+    )
+    fig.update_yaxes(autorange="reversed")
+    gantt_plot = plot(fig, output_type="div")
+
+    context = {
+        "plot_div": gantt_plot,
+    }
+
+    return render(request, 'tasks/chart.html', context)
