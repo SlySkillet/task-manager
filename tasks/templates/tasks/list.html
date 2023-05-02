@@ -21,7 +21,21 @@
                                 <td>{{ task.name }}</td>
                                 <td>{{ task.start_date|date:"m/d/Y g:iA" }}</td>
                                 <td>{{ task.due_date|date:"m/d/Y g:iA" }}</td>
-                                <td>{{ task.is_complete|yesno }}</td>
+                                <td>
+                                    <div>
+
+                                        <input type="checkbox"
+                                        {% if task.is_complete %}
+                                        checked
+                                        {%else%}
+                                        {% endif %}>
+                                        <label for="yesno">{{ task.is_complete|yesno }}</label>
+
+
+
+                                    </div>
+
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
