@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Project
 from django.contrib.auth.decorators import login_required
 from .forms import ProjectForm
-# import pandas as pd
-# import plotly.express as px
-# from plotly.offline import plot
+import pandas as pd
+import plotly.express as px
+from plotly.offline import plot
 
 # Create your views here.
 
@@ -16,8 +16,6 @@ def projects_view(request):
     context = {"projects": projects}
 
     return render(request, "projects/list.html", context)
-
-
 
 
 @login_required
