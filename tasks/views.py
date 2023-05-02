@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TaskForm
 from .models import Task
 from django.contrib.auth.decorators import login_required
@@ -61,6 +61,25 @@ def view_tasks(request):
     }
 
     return render(request, 'tasks/list.html', context)
+
+
+@login_required
+def edit_task(request, id):
+    task = get_object_or_404(Task, id)
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect("view_chart", id=id)
+    else:
+        form = TaskForm(instance=task)
+
+    context = {
+        "task": task,
+        "form": form,
+    }
+
+    return render(request, "tasks/edit.html", context)
 
 
 @login_required
