@@ -6,8 +6,10 @@
 <main>
 
     <div>
-        <h1>{{ project.name }}</h1>
-        <p>{{ project.description }}</p>
+
+        <h1>{{ parent_project.name }}</h1>
+        <p>{{ parent_project.description }}</p>
+
         <h2>Tasks</h2>
         <p class="create">
             <a href="{% url "create_task" %}">Create a new task</a>

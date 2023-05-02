@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 import pandas as pd
 import plotly.express as px
 from plotly.offline import plot
+from projects.models import Project
 
 # Create your views here.
 
@@ -94,6 +95,7 @@ def edit_task(request, id):
 
 @login_required
 def project_task_chart(request, id):
+    parent_project = get_object_or_404(Project, id=id)
 
     qs = Task.objects.filter(project=id)
     projects_data = [
@@ -111,7 +113,9 @@ def project_task_chart(request, id):
     fig.update_yaxes(autorange="reversed")
     gantt_plot = plot(fig, output_type="div")
 
+
     context = {
+        "parent_project": parent_project,
         "plot_div": gantt_plot,
         "tasks": qs,
     }
