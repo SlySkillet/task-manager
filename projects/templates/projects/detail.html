@@ -33,9 +33,17 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                <div>
+                    {% autoescape off %}
+                    {{ plot_div }}
+                    {% endautoescape %}
+                </div>
             {% else %}
                 <p>This project has no tasks</p>
             {% endif %}
         </div>
+        {% autoescape off %}
+        {{ plot_div }}
+        {% endautoescape %}
     </main>
 {% endblock content %}
