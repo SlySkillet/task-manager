@@ -26,6 +26,7 @@ def tasks_view(request, id):
         "tasks": task,
     }
 
+
     return render(request, "projects/detail.html", context)
 
 
