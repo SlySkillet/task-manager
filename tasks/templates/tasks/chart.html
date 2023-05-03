@@ -12,7 +12,7 @@
 
         <h2>Tasks</h2>
         <p class="create">
-            <a href="{% url "create_task" %}">Create a new task</a>
+            <a href="{% url "create_task" %}">Create New Task</a>
         </p>
         <p class="create">
             <a href="{% url "edit_project" parent_project.id %}">Edit Project</a>
@@ -25,7 +25,7 @@
                 <th>Start date</th>
                 <th>Due date</th>
                 <th>Is completed</th>
-                <th>Edit</th>
+                <th></th>
             </thead>
             <tbody>
                 {% for task in tasks.all  %}
@@ -35,7 +35,10 @@
                     <td>{{ task.start_date|date:"m/d/Y g:iA" }}</td>
                     <td>{{ task.due_date|date:"m/d/Y g:iA" }}</td>
                     <td>{{ task.is_complete|yesno }}</td>
-                    <td><a href="{% url "edit_task" task.id %}">Edit Task</a></td>
+                    <td>
+                        <a href="{% url "edit_task" task.id %}" class="create">Edit</a>
+                        <a href="{% url "delete_task" task.id%}">Delete</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

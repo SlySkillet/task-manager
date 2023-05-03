@@ -113,7 +113,6 @@ def project_task_chart(request, id):
     fig.update_yaxes(autorange="reversed")
     gantt_plot = plot(fig, output_type="div")
 
-
     context = {
         "parent_project": parent_project,
         "plot_div": gantt_plot,
@@ -121,3 +120,14 @@ def project_task_chart(request, id):
     }
 
     return render(request, 'tasks/chart.html', context)
+
+
+@login_required
+def delete_task(request, id):
+    task = Task.objects.get(id=id)
+    print(task.id)
+    if request.method == "POST":
+        task.delete()
+        return redirect("view_chart", id=task.project.id)
+
+    return render(request, "tasks/delete.html")
