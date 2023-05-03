@@ -96,30 +96,65 @@ def edit_task(request, id):
 @login_required
 def project_task_chart(request, id):
     parent_project = get_object_or_404(Project, id=id)
+    if len(Task.objects.filter(project=id)) == 0:
+        context = {"parent_project": parent_project}
 
-    qs = Task.objects.filter(project=id)
-    projects_data = [
-        {
-            'Project': task.name,
-            'Start': task.start_date,
-            'Finish': task.due_date,
-            'Responsible': task.assignee,
-        } for task in qs
-    ]
-    df = pd.DataFrame(projects_data)
-    fig = px.timeline(
-        df, x_start="Start", x_end="Finish", y="Project", color="Responsible"
-    )
-    fig.update_yaxes(autorange="reversed")
-    gantt_plot = plot(fig, output_type="div")
+        # return render(request, 'tasks/chart.html', context)
 
-    context = {
-        "parent_project": parent_project,
-        "plot_div": gantt_plot,
-        "tasks": qs,
-    }
+        # print(len(Task.objects.filter(project=id)))
+    else:
+        qs = Task.objects.filter(project=id)
+        projects_data = [
+            {
+                'Project': task.name,
+                'Start': task.start_date,
+                'Finish': task.due_date,
+                'Responsible': task.assignee,
+            } for task in qs
+        ]
+        df = pd.DataFrame(projects_data)
+        fig = px.timeline(
+            df, x_start="Start", x_end="Finish", y="Project", color="Responsible"
+        )
+        fig.update_yaxes(autorange="reversed")
+        gantt_plot = plot(fig, output_type="div")
+
+        context = {
+            "parent_project": parent_project,
+            "plot_div": gantt_plot,
+            "tasks": qs,
+            }
 
     return render(request, 'tasks/chart.html', context)
+
+# @login_required
+# def project_task_chart(request, id):
+#     parent_project = get_object_or_404(Project, id=id)
+
+#     qs = Task.objects.filter(project=id)
+
+#     projects_data = [
+#         {
+#             'Project': task.name,
+#             'Start': task.start_date,
+#             'Finish': task.due_date,
+#             'Responsible': task.assignee,
+#         } for task in qs
+#     ]
+#     df = pd.DataFrame(projects_data)
+#     fig = px.timeline(
+#         df, x_start="Start", x_end="Finish", y="Project", color="Responsible"
+#     )
+#     fig.update_yaxes(autorange="reversed")
+#     gantt_plot = plot(fig, output_type="div")
+
+#     context = {
+#         "parent_project": parent_project,
+#         "plot_div": gantt_plot,
+#         "tasks": qs,
+#         }
+
+#     return render(request, 'tasks/chart.html', context)
 
 
 @login_required
