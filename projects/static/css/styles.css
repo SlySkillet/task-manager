@@ -179,6 +179,22 @@ td, th{
     grid-column: 2/4;
 }
 
+/* PROJECT-TASKS VIEW PAGE WITH CHART */
+.create {
+    margin: 10px;
+    width: 200px;
+}
+
+.edit-del{
+    background-color: red;
+}
+
+.chart {
+    margin: 20px;
+    border: 1px solid rgb(249, 204, 204);
+}
+
+
 /* FOOTER */
 footer {
     height: 60px;
