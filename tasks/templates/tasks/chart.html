@@ -26,6 +26,7 @@
                 <th>Due date</th>
                 <th>Is completed</th>
                 <th></th>
+                <th></th>
             </thead>
             <tbody>
                 {% for task in tasks.all  %}
@@ -37,7 +38,9 @@
                     <td>{{ task.is_complete|yesno }}</td>
                     <td>
                         <a href="{% url "edit_task" task.id %}" class="create">Edit</a>
-                        <a href="{% url "delete_task" task.id%}">Delete</a>
+                    </td>
+                    <td>
+                        <a href="{% url "delete_task" task.id%}" class="create">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}
