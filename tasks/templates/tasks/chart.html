@@ -57,5 +57,6 @@
         {{ plot_div }}
         {% endautoescape %}
     </div>
+    <a href="{% url "delete_project" parent_project.id%}" class="create">DELETE PROJECT</a>
 </main>
 {% endblock content %}

@@ -64,3 +64,13 @@ def edit_project(request, id):
     }
 
     return render(request, "projects/edit.html", context)
+
+
+@login_required
+def delete_project(request, id):
+    project = Project.objects.get(id=id)
+    if request.method == "POST":
+        project.delete()
+        return redirect("list_projects")
+
+    return render(request, "projects/delete.html")
