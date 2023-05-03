@@ -49,7 +49,7 @@ def view_tasks(request):
         for x in id_list:
             Task.objects.filter(pk=int(x)).update(is_complete=True)
 
-        return(redirect("show_my_tasks"))
+        return redirect("show_my_tasks")
     projects_data = [
         {
             'Project': task.name,
@@ -95,15 +95,16 @@ def edit_task(request, id):
 
 @login_required
 def project_task_chart(request, id):
+
     parent_project = get_object_or_404(Project, id=id)
+
     if len(Task.objects.filter(project=id)) == 0:
         context = {"parent_project": parent_project}
 
-        # return render(request, 'tasks/chart.html', context)
-
-        # print(len(Task.objects.filter(project=id)))
     else:
+
         qs = Task.objects.filter(project=id)
+
         projects_data = [
             {
                 'Project': task.name,
@@ -112,10 +113,13 @@ def project_task_chart(request, id):
                 'Responsible': task.assignee,
             } for task in qs
         ]
+
         df = pd.DataFrame(projects_data)
+
         fig = px.timeline(
             df, x_start="Start", x_end="Finish", y="Project", color="Responsible"
         )
+
         fig.update_yaxes(autorange="reversed")
         gantt_plot = plot(fig, output_type="div")
 
@@ -126,35 +130,6 @@ def project_task_chart(request, id):
             }
 
     return render(request, 'tasks/chart.html', context)
-
-# @login_required
-# def project_task_chart(request, id):
-#     parent_project = get_object_or_404(Project, id=id)
-
-#     qs = Task.objects.filter(project=id)
-
-#     projects_data = [
-#         {
-#             'Project': task.name,
-#             'Start': task.start_date,
-#             'Finish': task.due_date,
-#             'Responsible': task.assignee,
-#         } for task in qs
-#     ]
-#     df = pd.DataFrame(projects_data)
-#     fig = px.timeline(
-#         df, x_start="Start", x_end="Finish", y="Project", color="Responsible"
-#     )
-#     fig.update_yaxes(autorange="reversed")
-#     gantt_plot = plot(fig, output_type="div")
-
-#     context = {
-#         "parent_project": parent_project,
-#         "plot_div": gantt_plot,
-#         "tasks": qs,
-#         }
-
-#     return render(request, 'tasks/chart.html', context)
 
 
 @login_required
