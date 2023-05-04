@@ -40,15 +40,17 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <button class ="btn btn-secondary" type="submit">Submit Completions</button>
+                <button class="btn btn-secondary" type="submit">Submit Completions</button>
             </form>
 
             {% else %}
                 <p>You have no tasks</p>
             {% endif %}
         </div>
-        {% autoescape off %}
-        {{ plot_div }}
-        {% endautoescape %}
+        <div class="chart">
+            {% autoescape off %}
+            {{ plot_div }}
+            {% endautoescape %}
+        </div>
     </main>
 {% endblock content %}
